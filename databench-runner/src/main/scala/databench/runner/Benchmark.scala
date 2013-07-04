@@ -32,7 +32,7 @@ case class Benchmark(
     @tailrec private def benchmark(numberOfVMs: Int): Unit = {
         val candidates =
             subjects.filter(_.acceptMultipleVMs || numberOfVMs == 1)
-        if (candidates.nonEmpty) {
+        if (candidates.nonEmpty && numberOfVMs <= properties.vmsEnd) {
             Round(
                 candidates,
                 tasks,

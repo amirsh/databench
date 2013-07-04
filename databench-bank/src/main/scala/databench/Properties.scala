@@ -15,9 +15,15 @@ object properties {
 
     val vmsStart = int("vmsStart", 1)
     val vmsStep = int("vmsStep", 2)
+    val vmsEnd = int("vmsEnd", 7)
 
     val threadsStart = int("threadsStart", 1)
     val threadsStep = int("threadsStep", 2)
+    val threadsEnd = int("threadsEnd", 7)
+
+    val strategy = string("strategy", "best") // "best", "all": in the "all" case number of threads would be until threadsEnd and in CSV output, all running information is reported.
+
+    def isBestStrategy = strategy equals "best"
 
     val postgreUser = string("postgreUser", "postgres")
     val postgrePassword = string("postgrePassword", "postgres")

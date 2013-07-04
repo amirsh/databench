@@ -47,7 +47,7 @@ object DatabenchBuild extends Build {
 		    )
 		)
 
-	val slick = "com.typesafe.slick" %% "slick" % "1.0.0"
+	val slick = "com.typesafe.slick" %% "slick" % "1.1.0-SNAPSHOT"
 
 	lazy val databenchSlick = 
 		Project(
@@ -192,7 +192,7 @@ object DatabenchBuild extends Build {
 			dependencies = Seq(databenchBank, databenchActivate,
 		    			databenchSlick, databenchPrevayler, databenchJpa,
 		    			databenchSqueryl, databenchDb4o, databenchEbean, 
-		    			databenchSqltyped, databenchJdbc, databenchChronicle),
+		    			/*databenchSqltyped, */databenchJdbc, databenchChronicle),
 			settings = commonSettings ++ assemblySettings ++ Seq(
 					libraryDependencies ++= Seq(
 						reflections, gfork, scalaTest, mysql, 

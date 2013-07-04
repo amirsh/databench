@@ -104,7 +104,7 @@ public class JdbcPostgreSubject implements Bank<Integer> {
 				+ "    TRANSFERS VARCHAR )");
 	}
 
-	private BoneCPConfig getBoneCPConfig() {
+	protected BoneCPConfig getBoneCPConfig() {
 		BoneCPConfig config = new BoneCPConfig();
 		config.setJdbcUrl(PostgreSqlDatabase.url());
 		config.setUsername(PostgreSqlDatabase.user());
@@ -113,7 +113,7 @@ public class JdbcPostgreSubject implements Bank<Integer> {
 		return config;
 	}
 
-	private ConnectionHandle getConnection() {
+	protected ConnectionHandle getConnection() {
 		try {
 			return (ConnectionHandle) boneCP.getConnection();
 		} catch (SQLException e) {
@@ -142,7 +142,7 @@ public class JdbcPostgreSubject implements Bank<Integer> {
 		return worker;
 	}
 
-	private void releaseConnection(Connection conn) {
+	protected void releaseConnection(Connection conn) {
 		try {
 			conn.close();
 		} catch (Exception e) {

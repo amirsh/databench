@@ -60,7 +60,7 @@ object ThreadTasks {
 
         def loop(numberOfThreads: Int): Stream[Seq[Seq[ThreadTasks]]] = {
             val groups = groupsFor(numberOfThreads)
-            groups #:: loop(groups.map(_.size).sum + (numberOfVMs * properties.threadsStep))
+            groups #:: {if (properties.isBestStrategy || numberOfThreads < numberOfVMs * properties.threadsEnd) loop(groups.map(_.size).sum + (numberOfVMs * properties.threadsStep)) else Stream()}
         }
 
         loop(numberOfVMs * properties.threadsStart)

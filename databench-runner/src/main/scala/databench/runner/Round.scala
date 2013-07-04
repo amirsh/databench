@@ -5,6 +5,7 @@ import databench.util.Logging
 import databench.database.Database
 import databench.task.Task
 import scala.collection.immutable.Seq
+import databench.properties
 
 case class Round(
     subjects: Seq[BankSubject],
@@ -19,7 +20,7 @@ case class Round(
 
     lazy val vmsTasksStream = ThreadTasks.generatorStreamFor(tasks, numberOfVMs)
 
-    subjects.map(bestTurnSummary(_))
+    subjects.foreach(s => if (properties.isBestStrategy) bestTurnSummary(s) else allTurnSummary(s))
 
     info("Round end.")
 
@@ -39,6 +40,23 @@ case class Round(
             .filter(_.tps > currentTurnSummary.tps)
             .map(reporter.report)
             .getOrElse(bestTurnSummary(subject.copy(), Some(currentTurnSummary), vmsTasksStreamIterator))
+    }
+
+    private def allTurnSummary(
+        subject: BankSubject,
+        vmsTasksStreamIterator: Iterator[Seq[Seq[ThreadTasks]]] = vmsTasksStream.iterator) {
+
+        Database.recreateAll
+
+        val currentTurnSummary =
+            turn(subject, vmsTasksStreamIterator.next, numberOfAccounts, memory)
+
+        info(currentTurnSummary.toString)
+
+        reporter.report(currentTurnSummary)
+
+        if (vmsTasksStreamIterator.hasNext)
+            allTurnSummary(subject.copy(), vmsTasksStreamIterator)
     }
 
     private def turn(
