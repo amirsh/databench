@@ -1,0 +1,4 @@
+Subject;VMs;Threads/VM;TPS;Failures;NOkAccountStatus;OkAccountStatus;OkTransfer
+PlainSqlSlickPostgreSubject;1;5;5202;5000;0;0;0
+SlickPostgreSubject;1;5;688;0;0;4000;1000
+PlainSqlSlickPostgreSubject;3;5;4424;5000;0;0;0

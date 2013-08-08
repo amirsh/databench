@@ -50,8 +50,8 @@ class NoCacheGetAccountStatusWorker {
 
 	public AccountStatus getAccountStatus(int id) throws SQLException {
 		PreparedStatement getAccountStatusPreparedStatement = connection.prepareStatement(
-					"SELECT balance, transfers FROM JDBCACCOUNT WHERE id=?",
-					ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+					"SELECT balance, transfers FROM JDBCACCOUNT WHERE id=?"/*,
+					ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY*/);
 		getAccountStatusPreparedStatement.setInt(1, id);
 		ResultSet rs = getAccountStatusPreparedStatement.executeQuery();
 		rs.next();

@@ -14,7 +14,7 @@ import com.jolbox.bonecp.ConnectionHandle;
 import databench.AccountStatus;
 import databench.Bank;
 import databench.database.PostgreSqlDatabase;
-
+/*
 public class NoCacheNoBatchJdbcPostgreSubject extends NoCacheJdbcPostgreSubject {
 
 	public NoCacheNoBatchJdbcPostgreSubject() throws SQLException {
@@ -27,3 +27,4 @@ public class NoCacheNoBatchJdbcPostgreSubject extends NoCacheJdbcPostgreSubject 
 	}
 
 }
+*/

@@ -1,0 +1,11 @@
+Subject;VMs;Threads/VM;TPS;Failures;NOkAccountStatus;OkAccountStatus;OkTransfer
+ActivatePostgreSubject;1;1;6960;0;0;400000;100000
+EbeanPostgreSubject;1;1;3480;0;0;400000;100000
+JdbcPostgreSubject;1;1;4831;0;0;400000;100000
+JpaBatooPostgreSubject;1;1;1266;0;0;400000;100000
+JpaEclipseLinkPostgreSubject;1;1;2020;0;0;400000;100000
+JpaHibernatePostgreSubject;1;1;1727;0;0;400000;100000
+PlainSqlSlickPostgreSubject;1;1;2359;0;0;400000;100000
+ShallowSlickPostgreSubject;1;1;2297;0;0;400000;100000
+SlickPostgreSubject;1;1;392;0;0;400000;100000
+SquerylPostgreSubject;1;1;1686;0;0;400000;100000
